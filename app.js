@@ -13,7 +13,7 @@ const movieList = [
     trailer: "/video/final_score_trailer.mp4",
     video:"/video/PHI VỤ GIẢI CỨU (Thuyết Minh)   Phim Hành Động Tội Phạm Mỹ   Phim Lẻ hay 2023   Way Phim.mp4",
     description: "Michael Knox, a former American soldier, visits the UK to see his late comrade's niece. During a football match, the stadium is taken over by terrorists. Michael fights to rescue the girl and stop a large-scale terrorist plot.",
-    poster: "anhPhim/Final-score.jpg"
+    poster: "Final-score.jpg"
   },
   {
     id: 2,
@@ -28,7 +28,7 @@ const movieList = [
     trailer: "video/(Official Trailer) MECHANIC RESURRECTION (SÁT THỦ “THỢ MÁY” SỰ TÁI XUẤT).mp4",
     video:"video/SÁT THỦ THỢ MÁY - JASON STATHAM - Phim Hành Động Võ Thuật Mỹ Chiếu Rạp Thuyết Minh.mp4",
     description: "A hunted assassin must use all his skills to survive and complete his mission.",
-    poster: "anhPhim/machine-resurrection.jpg"
+    poster: "machine-resurrection.jpg"
   },
   {
     id: 3,
@@ -43,7 +43,7 @@ const movieList = [
     trailer: "video/Trailer Phim Đặc Chủng Chiến Lang 2014  Ngô Kinh.mp4",
     video:"video/CHIẾN LANG - PHẦN CUỐI - NGÔ KINH   PHIM LẺ HÀNH ĐỘNG VÕ THUẬT CHIẾU RẠP HAY NHẤT 2025.mp4",
     description: "Wu Jing plays an elite soldier who defends his homeland from dark forces.",
-    poster: "anhPhim/Chien-Lang.jpg"
+    poster: "Chien-Lang.jpg"
   },
   {
     id: 4,
@@ -58,7 +58,7 @@ const movieList = [
     trailer: "/video/diep-van-3-trailer.mp4",
     video:"",
     description: "Ip Man faces a series of dangerous challenges and enemies in the fight to defend the honor of Chinese martial arts.",
-    poster: "anhPhim/Diep-Van-3.jpg"
+    poster: "Diep-Van-3.jpg"
   },
   {
     id: 5,
@@ -73,7 +73,7 @@ const movieList = [
     trailer: "/video/diep-van-4-trailer.mp4",
     video:"",
     description: "Ip Man continues his journey to uphold martial arts in a changing society.",
-    poster: "anhPhim/Diep-Van-4.jpg"
+    poster: "Diep-Van-4.jpg"
   },
   {
     id: 6,
@@ -88,7 +88,7 @@ const movieList = [
     trailer: "/video/hoang-phi-hong-bi-an-mot-huyen-thoai-trailer.mp4",
     video:"",
     description: "Eddie Peng plays Wong Fei Hung in a martial arts tale facing major challenges in the late 19th century.",
-    poster: "anhPhim/hoang-phi-hong.jpg"
+    poster: "hoang-phi-hong.jpg"
   },
   {
     id: 7,
@@ -103,7 +103,7 @@ const movieList = [
     video:"",
     trailer: "/video/diep-van-2-trailer.mp4",
     description: "Ip Man faces off against foreign fighters, including Mike Tyson, to defend the reputation of Chinese martial arts.",
-    poster: "anhPhim/Diep-Van-2.jpg"
+    poster: "Diep-Van-2.jpg"
   },
   {
     id: 8,
@@ -118,7 +118,7 @@ const movieList = [
     trailer: "video/Chốt Chặn Cuối Cùng  (The Last Stand).mp4",
     video:"",
     description: "A former soldier joins a hostage rescue operation at a stadium, confronting a large-scale terrorist plot.",
-    poster: "anhPhim/Chot-Chan-Cuoi-Cung.jpg"
+    poster: "Chot-Chan-Cuoi-Cung.jpg"
   },
   {
     id: 9,
@@ -133,7 +133,7 @@ const movieList = [
     trailer: "/video/diep-van-1-trailer.mp4",
     video:"",
     description: "Ip Man, a master martial artist, faces dangerous opponents in brutal fights to protect his honor and family.",
-    poster: "anhPhim/Diep-Van-1.jpg"
+    poster: "Diep-Van-1.jpg"
   },
   {
     id: 10,
@@ -148,7 +148,7 @@ const movieList = [
     trailer: "/video/[Phim Chiếu Rạp] Skin Trade - Mạng Đổi Mạng Official Trailer.mp4",
     video:"",
     description: "An American cop and an assassin team up to fight a human trafficking crime syndicate.",
-    poster: "anhPhim/Skin-Trade.jpg"
+    poster: "Skin-Trade.jpg"
   },
   {
     id: 11,
@@ -163,7 +163,7 @@ const movieList = [
     trailer: "/video/huyen-thoai-hercules-trailer.mp4",
     video:"",
     description: "Hercules, one of Greece's greatest heroes, faces immense challenges to save his world.",
-    poster: "anhPhim/huyen-thoai-hercules.png"
+    poster: "huyen-thoai-hercules.png"
   },
   {
     id: 12,
@@ -178,7 +178,7 @@ const movieList = [
     trailer: "/video/krrish-trailer.mp4",
     video:"",
     description: "Krishna, a man with superpowers, learns his past and fights an evil organization exploiting his power.",
-    poster: "anhPhim/Krrish.jpg"
+    poster: "Krrish.jpg"
   },
   {
     id: 13,
@@ -193,7 +193,7 @@ const movieList = [
     trailer: "/video/the_protector_trailer.mp4",
     video:"",
     description: "A young fighter travels to Australia to retrieve his stolen elephants and battles an underground crime syndicate.",
-    poster: "anhPhim/chien-binh-hoa-tien.jpg"
+    poster: "chien-binh-hoa-tien.jpg"
 },
 {
     id: 14,
@@ -208,7 +208,7 @@ const movieList = [
     trailer: "/video/14_blades_trailer.mp4",
     video:"",
     description: "A secret service agent of the emperor is betrayed and must fight against powerful enemies to clear his name.",
-    poster: "anhPhim/cam-y-ve.jpg"
+    poster: "cam-y-ve.jpg"
 },
 {
   id: 15,
@@ -223,7 +223,7 @@ const movieList = [
   trailer: "/video/hunter_killer_trailer.mp4",
   video:"",
   description: "Một đội tàu ngầm và lực lượng đặc nhiệm Mỹ được giao nhiệm vụ ngăn chặn chiến tranh thế giới khi một âm mưu đảo chính diễn ra ở Nga.",
-  poster: "anhPhim/diep-vu-giai-cuu.jpg"
+  poster: "diep-vu-giai-cuu.jpg"
 },
 
 {
@@ -239,7 +239,7 @@ const movieList = [
   trailer: "https://www.youtube.com/watch?v=TbQm5doF_Uc",
   video: "https://www.youtube.com/watch?v=FLzfXQSPBOg",
   description: "Câu chuyện về tình chị em và sức mạnh băng giá của Elsa.",
-  poster: "anhPhim/frozen.jpg"
+  poster: "frozen.jpg"
 },
 {
   id: 17,
@@ -254,7 +254,7 @@ const movieList = [
   trailer: "https://www.youtube.com/watch?v=_inKs4eeHiI",
   video: "https://www.youtube.com/watch?v=PXi3Mv6KMzY",
   description: "Chú gấu trúc Po vượt qua bản thân để trở thành chiến binh rồng.",
-  poster: "anhPhim/kungfu-panda.jpg"
+  poster: "kungfu-panda.jpg"
 },
 {
   id: 18,
@@ -269,7 +269,7 @@ const movieList = [
   trailer: "https://www.youtube.com/watch?v=z3biFxZIJOQ",
   video: "https://www.youtube.com/watch?v=8IdMPpKMdcc",
   description: "Baymax và Hiro tạo nên đội siêu anh hùng công nghệ cao.",
-  poster: "anhPhim/big-hero-6.png"
+  poster: "big-hero-6.png"
 },
 {
   id: 19,
@@ -284,7 +284,7 @@ const movieList = [
   trailer: "https://www.youtube.com/watch?v=FC6biTjEyZw",
   video: "https://www.youtube.com/watch?v=fcM2OVFRB1k",
   description: "Câu chuyện tình yêu vượt thời gian giữa Noah và Allie.",
-  poster: "anhPhim/the-note-book.jpg"
+  poster: "the-note-book.jpg"
 },
 {
   id: 20,
@@ -299,7 +299,7 @@ const movieList = [
   trailer: "https://www.youtube.com/watch?v=0pdqf4P9MB8",
   video: "https://www.youtube.com/watch?v=Po8k1kGe-zo",
   description: "Câu chuyện tình yêu của một nhạc sĩ và một nữ diễn viên tại Los Angeles.",
-  poster: "anhPhim/la-la-land.jpg"
+  poster: "la-la-land.jpg"
 },
 {
   id: 21,
@@ -314,7 +314,7 @@ const movieList = [
   trailer: "https://www.youtube.com/watch?v=9ItBvH5J6ss",
   video: "https://www.youtube.com/watch?v=2aDZHYsP8GI",
   description: "Tình yêu giữa hai thiếu niên đang chống chọi bệnh tật.",
-  poster: "anhPhim/The_Fault_in_Our_Stars.png"
+  poster: "The_Fault_in_Our_Stars.png"
 },
 
 {
@@ -330,7 +330,7 @@ const movieList = [
   trailer: "https://www.youtube.com/watch?v=ERdmS7Vto1Q",
   video: "https://www.youtube.com/watch?v=QVmD8z4d-6I",
   description: "Huấn luyện viên bóng bầu dục giúp đoàn kết học sinh đa chủng tộc.",
-  poster: "anhPhim/remember-the-titans.jpg"
+  poster: "remember-the-titans.jpg"
 },
 {
   id: 23,
@@ -345,7 +345,7 @@ const movieList = [
   trailer: "https://www.youtube.com/watch?v=8F0nM0JrDJ0",
   video: "https://www.youtube.com/watch?v=lQ1n_zcNbdE",
   description: "Huấn luyện viên bóng rổ đặt luật học tập nghiêm ngặt cho học sinh.",
-  poster: "anhPhim/Coach-Carter.jpg"
+  poster: "Coach-Carter.jpg"
 },
 {
   id: 24,
@@ -360,7 +360,7 @@ const movieList = [
   trailer: "https://www.youtube.com/watch?v=p0rfSjfZ3zA",
   video: "https://www.youtube.com/watch?v=WB1ltWspN1g",
   description: "Cô gái trẻ Anh gốc Ấn quyết tâm theo đuổi bóng đá.",
-  poster: "anhPhim/Bend It Like Beckham.jpg"
+  poster: "Bend It Like Beckham.jpg"
 },
 {
   id: 25,
@@ -375,7 +375,7 @@ const movieList = [
   trailer: "https://www.youtube.com/watch?v=Z_8IuyTaylU",
   video: "https://www.youtube.com/watch?v=kNNLL5EjhXo",
   description: "Câu chuyện có thật về một cầu thủ bóng bầu dục vượt khó.",
-  poster: "anhPhim/The Blind Side.jpg"
+  poster: "The Blind Side.jpg"
 },
 {
   id: 26,
@@ -390,7 +390,7 @@ const movieList = [
   trailer: "https://www.youtube.com/watch?v=GdGDqYidikw",
   video: "https://www.youtube.com/watch?v=OJWJE0x7T4Q",
   description: "Cuộc đời võ sĩ quyền anh Jake LaMotta.",
-  poster: "anhPhim/Raging Bull.jpg"
+  poster: "Raging Bull.jpg"
 }
 
 ];
