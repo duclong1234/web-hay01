@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+  <meta charset="UTF-8">
+  <title>Web xem phim</title>
+  <link rel="stylesheet" href="LH.CSS">
+  <script src="https://cdn.emailjs.com/dist/email.min.js"></script>
+</head>
+
+<body>
+  <!-- Thanh điều hướng -->
+  <nav>
+    <ul>
+      <li class="menu-list-item" id="BOLD"><a href="TRANGWEB.html">Trang chủ</a></li>
+    </ul>   
+  </nav>
+
+  <!-- Nội dung liên hệ -->
+  <div class="content">
+    <h1>Liên hệ và hỗ trợ</h1>
+    <h2>Chúng tôi sẵn sàng hỗ trợ bạn 24/7!</h2>
+    <h3><center>Hãy nhập thông tin bên dưới và yêu cầu mà bạn cần chúng tôi giải đáp. Chúc bạn sử dụng trang Web một cách trọn vẹn</center></h3>
+    <br>
+    <h4>Thông tin liên hệ</h4>
+
+    <!-- Biểu mẫu liên hệ -->
+    <form id="contact-form" class="form">
+      <label for="name">Họ và tên:</label>
+      <input type="text" id="name" name="from_name" required>
+
+      <label for="email">Email:</label>
+      <input type="email" id="email" name="from_email" required>
+
+      <label for="message">Tin nhắn:</label>
+      <textarea id="message" name="message" rows="5" required></textarea>
+
+      <button type="submit">Gửi</button>
+      <p id="form-message" style="margin-top: 10px;"></p>
+    </form>
+
+    <!-- Thông tin liên hệ -->
+    <div class="contact-info">
+      <p><strong>Email:</strong> 123abc@gmail.com</p>
+      <p><strong>Hotline:</strong> +84 123 456 789</p>
+      <p><strong>Địa chỉ:</strong> Số nhà 123, Đường Nguyễn A, Khu B, Thành Phố C</p>
+    </div>
+  </div>
+
+  <!-- Footer -->
+  <footer style="background-color: rgba(0,0,0,0); border-top: 2px solid red; color: #777; padding: 20px 0; text-align: center;">
+    <div style="max-width: 1000px; margin: auto;">
+      <p style="font-size: 18px; margin-bottom: 10px;">🎬 Website Xem Phim Trực Tuyến</p>
+      <p style="font-size: 14px; margin: 5px 0;">Liên hệ: contact@xemphimonline.vn</p>
+      <p style="font-size: 14px; margin: 5px 0;">© 2025 XemPhimOnline.vn – All rights reserved</p>
+      <p style="font-size: 13px; margin-top: 10px;">
+        Nội dung trên website được tổng hợp từ nhiều nguồn khác nhau và chỉ phục vụ mục đích giải trí.
+      </p>
+    </div>
+  </footer>
+
+  <!-- JavaScript xử lý gửi form -->
+  <script>
+    document.addEventListener("DOMContentLoaded", function () {
+      emailjs.init("30BRLeMEIQRU83OVP");
+
+      document.getElementById("contact-form").addEventListener("submit", function (e) {
+        e.preventDefault();
+
+        emailjs.send("service_b4gi3t6", "template_y53b79k", {
+          from_name: document.getElementById("đức").value,
+          from_email: document.getElementById("service_b4gi3t6").value,
+          message: document.getElementById("m2424801030009@student.tdmu.edu.vn").value,
+        })
+        .then(() => {
+          document.getElementById("form-message").textContent = "✅ Gửi thành công!";
+          document.getElementById("contact-form").reset();
+        }, (error) => {
+          document.getElementById("form-message").textContent = "❌ Lỗi khi gửi. Vui lòng thử lại.";
+          console.error("EmailJS Error:", error);
+        });
+      });
+    });
+  </script>
+</body>
+</html>

@@ -1,0 +1,282 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="fileCSS.css">
+  <!--link thư viện của font awsome cho phép sử dụng ICON-->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+    <!-- link thư viện lấy chữ Google Fonts  -->
+    <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&display=swap" rel="stylesheet">
+    <title>Movies-design</title>
+    
+</head>
+
+    <body>
+        <div class="navbar">
+            <div class="navbar-container">
+                <div class="logo-container"><h1 class="logo">Movies</h1></div>
+                <div class="menu-container">
+                    <ul class="menu-list">
+                        <li class="menu-list-item" id="BOLD">Trang chủ</li>
+                        <li class="menu-list-item"><a href="Trangchitiet.html?id=2">Xem phim</a></li>
+                        <li class="menu-list-item"><a href="Tranglienhe.html">Liên hệ</a></li>
+                        <li class="menu-list-item"><a href="Trangtimkiem.html?keyword=f">Tìm kiếm</a></li>
+                    </ul>
+                </div>
+                <div class="profile-container">
+                    <!--thanh tìm kiếm-->
+                        <form action="Trangtimkiem.html" method="GET" id="search-box">
+                            <input type="text" id="search-text" name="keyword" placeholder="Search ?" required autocomplete="off"> <!--tắt thanh gợi ý mặc định-->
+                            <button type="submit" id="search-btn">
+                                <i class="fas fa-search"></i>
+                            </button>
+                            <ul id="suggestions"></ul> <!-- Hiển thị gợi ý -->
+                        </form>
+                     <!--thẻ chứa hình ảnh sau khi nhập tìm kiếm-->
+                    
+                    <div class="toggle">
+                        <i class="fas fa-moon toggle-icon"></i>
+                        <i class="fas fa-sun toggle-icon"></i>
+                        <div class="toggle-ball"></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+       
+        <div class="container"> 
+            <div class="content-container">
+                <div class="featured-content"> 
+                    <div class="scroll-wrapper">
+                    <div id="scroll-container">
+                    <!-- <div class="movie-list-main-item">
+                        <video id="movie-video" controls poster="" autoplay muted>
+                            <source id="video-source" src="" type="video/mp4">
+                        </video>
+
+                        <div class="overlay">
+                        <h2 class="featured-title">ĐIỆP VỤ GIẢI CỨU</h2>
+                        
+                        <button class="featured-button"><i class="fa-solid fa-play"> Xem ngay</i></button>
+                        </div> -->
+                    </div>
+                </div>
+                <!--vì sao scrollLeft không chạy được vì có thể trình duyệt 
+                cũng sử dụng cái tên này rồi nên phải đổi tên thánhcrollToLeft-->
+                <button class="slide-button slide-left" onclick="scrollToRight('left')"><i class="fa-solid fa-chevron-left"></i></button>
+                <button class="slide-button slide-right" onclick="scrollToRight('right')"><i class="fa-solid fa-chevron-right"></i></button>
+                </div>
+<!--ranh movie-list-container-->         
+                <div class="movie-list-container">
+                    <h1 class="movie-list-title">PHIM HÀNH ĐỘNG</h1>
+                    <div class="movie-list-wrapper">
+                        <div class="movie-list" id="list1">
+
+                            
+                            
+                        </div>
+                        <i class="arrowleft fas fa-chevron-left" onclick="currentIndex1 = scrollArrow('left', currentIndex1, 'list1')"></i>
+                        <i class="arrow fas fa-chevron-right" onclick="currentIndex1 = scrollArrow('right', currentIndex1, 'list1')"></i><!--class arrow là địa chỉ cho css còn fas fa-chevron-right là icon-->
+                    </div>
+                </div>
+<!--ranh movie-list-container-->        
+                <div class="movie-list-container">
+                    <h1 class="movie-list-title">PHIM THỊNH HÀNH</h1>
+                    <div class="movie-list-wrapper">
+                        <div id="list2" class="movie-list">
+
+                           
+                        </div>
+                        <!--hai thanh trượt ngang trái và phải-->
+                        <i class="arrowleft fas fa-chevron-left" onclick="currentIndex2 = scrollArrow('left', currentIndex2, 'list2')"></i>
+                        <i class="arrow fas fa-chevron-right" onclick="currentIndex2 = scrollArrow('right', currentIndex2, 'list2')"></i><!--class arrow là địa chỉ cho css còn fas fa-chevron-right là icon-->
+                    </div>
+                </div>
+<!--ranh movie-list-container-->
+            </div> 
+        </div>
+        
+        <footer style="background-color: rgba(0,0,0,0); border-top: 2px solid red; color: #777; padding: 20px 0; text-align: center;">
+            <div style="max-width: 1000px; margin: auto;">
+              <p style="font-size: 18px; margin-bottom: 10px;">🎬 Website Xem Phim Trực Tuyến</p>
+              <p style="font-size: 14px; margin: 5px 0;">Liên hệ: contact@xemphimonline.vn</p>
+              <p style="font-size: 14px; margin: 5px 0;">© 2025 XemPhimOnline.vn – All rights reserved</p>
+              <p style="font-size: 13px; margin-top: 10px;">
+                Nội dung trên website được tổng hợp từ nhiềunguồn khác nhau và chỉ phục vụ mục đích giải trí.
+              </p>
+            </div>
+          </footer>
+    </body>
+</html>
+                <script>
+                    let currentIndex1 = 0;
+                    let currentIndex2 = 0;
+                </script>
+                <!--LIÊN KẾT FILE JAVASCRIPT-->
+                <script src="app.js"></script>
+                  <script src="index.js"></script>
+            
+                <script>
+                  
+
+                    
+                    darkLight();
+
+                    function renderFeaturedMovies() {
+                        const container = document.getElementById("scroll-container");
+                        container.innerHTML = ""; // Xoá nội dung cũ nếu có
+
+                        for (let i = 0; i < 3; i++) {
+                            const movie = movieList[i];
+                            const item = document.createElement("div");
+                            item.className = "movie-list-main-item";
+
+                            item.innerHTML = 
+                            `<video class="movie-video" autoplay muted poster="${movie.poster}">
+                                <source src="${movie.trailer}" type="video/mp4">
+                            </video>
+                            
+                            <div class="overlay">
+                                <button class="mute-btn" onclick="battat(${i})">
+                                    <i class="fa-solid fa-volume-xmark"></i> <!-- Icon mặc định là loa câm -->
+                                </button>
+
+                                <h2 class="featured-title">${movie.title}</h2>
+                                <button class="featured-button" onclick="location.href='Trangchitiet.html?id=${movie.id}'">
+                                    <i class="fa-solid fa-play"></i> Xem ngay
+                                </button>
+                            </div>
+                        `;
+
+                            container.appendChild(item);
+                        }
+                       
+                        // Thêm sự kiện cho các nút loa sau khi tạo phần tử
+                        const muteBtns = document.querySelectorAll(".mute-btn");
+                        const videos = document.querySelectorAll(".movie-video");
+
+                        muteBtns.forEach((btn, index) => {
+                            const video = videos[index];//truyền vào số thứ tự nút loa và dùng số thứ tự nút loa làm stt cho phần tử video
+                            btn.addEventListener("click", function() {
+                                // Nếu video đang ở chế độ tắt âm (muted), thì mở âm lên
+                                if (video.muted) {
+                                    video.muted = false;
+                                    btn.innerHTML = '<i class="fa-solid fa-volume-high"></i>'; // Cập nhật icon loa
+                                } else {
+                                    video.muted = true;
+                                    btn.innerHTML = '<i class="fa-solid fa-volume-xmark"></i>'; // Cập nhật icon tắt loa
+                                }
+                            });
+                        });
+                    }
+                    function renderList(list) {
+                        const list2 = document.getElementById("list2");
+                        const list1 = document.getElementById("list1");
+                        list2.innerHTML = ""; // Xóa sạch nội dung cũ
+
+                        function eventMouse(div, video) { //hàm sự kiên
+                                div.addEventListener('mouseenter', () => {
+                                if (video) {
+                                    video.style.display = 'block';
+                                    video.load(); // đảm bảo tải
+                                    video.oncanplay = () => {
+                                        video.play();
+                                    };
+                                }
+                            });
+
+                                div.addEventListener('mouseleave', () => {
+                                if (video) {
+                                    video.pause();
+                                    video.currentTime = 0;
+                                    video.style.display = 'none';
+                                }
+                                });
+                            
+                            }
+
+                        for (let i = movieList.length - 1; i >= 0; i--) {
+                            if ( i >= 15 ) {// thêm cũng được parseInt((movieList.length - 1)/2
+                                const movie = movieList[i];
+                                const div = document.createElement("div");
+                                div.classList.add("movie-list-item");
+
+                                div.innerHTML = `
+                                <img class="movie-list-item-img" src="${movie.poster}" alt="${movie.title}">
+                               <video class="movie-list-item-trailer" src="${movie.trailer}" muted preload="auto" loop></video>
+                                <span class="movie-list-item-title">${movie.title}</span>
+                                <button class="movie-list-item-button" onclick="location.href='Trangchitiet.html?id=${movie.id}'">
+                                    <i class="fa-solid fa-play"></i> Xem ngay
+                                </button>
+                                `;
+
+                                const video = div.querySelector(".movie-list-item-trailer");
+                                video.muted = true;
+                                eventMouse(div, video);
+
+                            list2.appendChild(div);
+
+                            }
+                            else {
+                                const movie = movieList[i];
+                                const div = document.createElement("div");
+                                div.classList.add("movie-list-item");
+
+                                div.innerHTML = `
+                                    <img class="movie-list-item-img" src="${movie.poster}" alt="${movie.title}">
+                                    <video class="movie-list-item-trailer" src="${movie.trailer}" muted preload="auto" loop style="display:none;"></video>
+                                    <span class="movie-list-item-title">${movie.title}</span>
+                                    <button class="movie-list-item-button" onclick="location.href='Trangchitiet.html?id=${movie.id}'">
+                                        <i class="fa-solid fa-play"></i> Xem ngay
+                                    </button>
+                                `;
+
+                                const video = div.querySelector(".movie-list-item-trailer");
+                                    eventMouse(div, video);//Gọi hàm
+
+                                list1.appendChild(div);//thêm vào danh sách một
+                            }
+
+                        }
+                    }
+
+                    // Gọi hàm khi trang đã tải xong
+                    window.onload = function () {
+                        renderFeaturedMovies();
+                        renderList(movieList);
+                    };
+
+                    let currentIndex = 0;
+
+                    function scrollToRight(b) {
+                        const container = document.getElementById("scroll-container");
+                        const items = document.querySelectorAll(".movie-list-main-item");
+                        const videos = document.querySelectorAll(".movie-video"); // cần phải có dòng này ở 
+                        //đây! vì videos đã khai báo bên trong hàm renderFeaturedMovies() nên không thể cứ lấy 
+                        //video mà không khai báo lại trong hàm crollToRight() này. hoặc khai báo bên ngoài thì
+                        //phải dùng let để có thể cập nhật giá trị.
+                        const maxIndex = items.length - 1;
+                        
+                        videos[currentIndex].pause(); //tắt autoplay
+                        videos[currentIndex].currentTime = 0;//cho thời gian trailer chạy về mốc 0
+
+                        if (currentIndex < maxIndex&&b ==='right') {
+                            currentIndex++;
+                        }
+                        else if (currentIndex > 0 && b ==='left') {
+                            currentIndex--;
+                        }
+                        else if (currentIndex === maxIndex&&b ==='right') {
+                            currentIndex=0;
+                            const offset = currentIndex;
+                        }
+                         else if (currentIndex === 0 && b ==='left') {
+                            currentIndex+=maxIndex;
+                        }
+
+                        const offset = items[currentIndex].offsetLeft;
+                            container.style.transform = `translateX(-${offset}px)`;
+                            container.style.transition = "transform 0.5s ease";
+                            videos[currentIndex].play();
+                    }
+                </script>

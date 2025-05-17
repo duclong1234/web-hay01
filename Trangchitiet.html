@@ -1,0 +1,221 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="fileCSS.css">
+    <!--link thư viện của font awsome cho phép sử dụng ICON-->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+    <title>Movies-design</title>
+    </head>
+
+    
+    <body>
+        <div class="navbar">
+            <div class="navbar-container">
+                <div class="logo-container"><h1 class="logo">Movies</h1></div>
+                <div class="menu-container">
+                    <ul class="menu-list">
+                        <li class="menu-list-item" id="BOLD"><a href="TRANGWEB.html">Trang chủ</a></li>
+                        <li class="menu-list-item">Xem phim</li>
+                        <li class="menu-list-item"><a href="Tranglienhe.html">Liên hệ</a></li>
+                        <li class="menu-list-item"><a href="Trangtimkiem.html?keyword=f">Tìm kiếm</a></li>
+                    </ul>
+                </div>
+                <div class="profile-container">
+                    <!--thanh tìm kiếm-->
+                    <form action="Trangtimkiem.html" method="GET" id="search-box">
+                            <input type="text" id="search-text" name="keyword" placeholder="Tìm kiếm..." required autocomplete="off"> <!--tắt thanh gợi ý mặc định-->
+                            <button type="submit" id="search-btn">
+                                <i class="fas fa-search"></i>
+                            </button>
+                            <ul id="suggestions"></ul>
+                        </form>
+                    <!--thẻ chứa hình ảnh sau khi nhập tìm kiếm-->
+
+                    <div class="toggle">
+                        <i class="fas fa-moon toggle-icon"></i>
+                        <i class="fas fa-sun toggle-icon"></i>
+                        <div class="toggle-ball"></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <!--phần trình chiếu video xem phim khi ta click chúng ở trang chủ-->
+        <div class="container">
+            <div class="content-container">
+                
+                <div class="featured-content" id="featured-content">
+                    
+                        <video id="movie-video" controls muted poster="">
+                            <source id="video-source" src="" type="video/mp4">
+                        </video>
+
+                        <!-- Các nút điều khiển -->
+                        <div class="video-controls">
+                            <!-- Nút Tua -->
+                            <button id="rewind-btn" class="control-btn">
+                                <i class="fa-solid fa-backward-fast"></i>
+                            </button>
+
+                            <button id="forward-btn" class="control-btn">
+                                <i class="fa-solid fa-forward-fast"></i>
+                            </button>
+                        </div>
+
+                        <!-- <div class="title-description">
+                            <h1 id="movie-title"></h1>
+                            <p id="movie-description"></p>
+                        </div> -->
+
+                </div>
+                 <script src="app.js"></script>
+
+                <script>
+                    let currentIndex3 = 0;
+                </script>
+                
+                <div class="movie-list-container">
+                    <h1 class="movie-list-title">ĐỀ XUẤT</h1>
+                    <div class="movie-list-wrapper">
+                        <div class="movie-list"   id="list-trang-chi-tiet">
+        
+                            <!--phần trả về kết quả đề xuất-->
+
+                        </div>
+                        <i class="arrowleft fas fa-chevron-left" onclick="currentIndex3 = scrollArrow('left', currentIndex3, 'list-trang-chi-tiet')"></i>
+                        <i class="arrow fas fa-chevron-right" onclick="currentIndex3 = scrollArrow('right', currentIndex3, 'list-trang-chi-tiet')"></i><!--class arrow là địa chỉ cho css còn fas fa-chevron-right là icon-->
+                    </div>
+                </div>
+
+            </div>
+        </div>
+        <footer style="background-color: rgba(0,0,0,0); border-top: 2px solid red; color: #777; padding: 20px 0; text-align: center;">
+            <div style="max-width: 1000px; margin: auto;">
+              <p style="font-size: 18px; margin-bottom: 10px;">🎬 Website Xem Phim Trực Tuyến</p>
+              <p style="font-size: 14px; margin: 5px 0;">Liên hệ: contact@xemphimonline.vn</p>
+              <p style="font-size: 14px; margin: 5px 0;">© 2025 XemPhimOnline.vn – All rights reserved</p>
+              <p style="font-size: 13px; margin-top: 10px;">
+                Nội dung trên website được tổng hợp từ nhiềunguồn khác nhau và chỉ phục vụ mục đích giải trí.
+              </p>
+            </div>
+          </footer>
+        
+    </body>
+    
+</html>
+<!-- đặt ở đây là để đảm bảo trang web đã được tải xong thì mới chạy hàm -->
+<script>
+                        darkLight();
+                        
+                        const params = new URLSearchParams(window.location.search);
+                        const movieId = parseInt(params.get('id'));
+
+                        const container = document.querySelector(".movie-list");
+
+                        // Hàm tạo phần tử phim đề xuất
+                        function displayfilm(film) {
+                            const movieItem = document.createElement("div");
+                            movieItem.className = "movie-list-item";
+                            // <p class="movie-list-item-desc">${film.description}</p>
+                            movieItem.innerHTML = `
+                                <img class="movie-list-item-img" src="${film.poster}">
+                                <span class="movie-list-item-title">${film.title}</span>
+                                <button class="movie-list-item-button" onclick="playVideo(${film.id})">
+                                    <i class="fa-solid fa-play"> Xem ngay</i>
+                                </button>
+                            `;
+
+                            container.appendChild(movieItem);//thêm phần tử vào một thẻ chứa 
+                        }
+
+                        // Hàm xoá khoảng trắng và viết thường
+                        function tolower(str) {
+                            return str.toLowerCase().replace(/\s+/g, '');
+                        }
+
+                        function playVideo(movieId) {
+                            const videoElement = document.getElementById('movie-video');
+                            const source = document.getElementById('video-source');
+                            const description = document.getElementById("movie-description");
+                            const title = document.getElementById("movie-title");
+                            // Tìm phim đúng ID
+                            const movie = movieList.find(m => m.id === movieId);
+                            if (!movie) return;
+                            // Cập nhật video
+                            source.src = movie.video;
+                            videoElement.poster = movie.poster;
+                            videoElement.style.display = "block";
+                            videoElement.load();
+                            videoElement.muted = true;
+                             //  // Cập nhật tiêu đề và mô tả
+                            // videoElement.textContent = movie.title;
+                            // videoElement.textContent = movie.description;
+                            // Xóa danh sách cũ
+                            container.innerHTML = "";
+                            const displayedIds = [];
+
+                        // Gợi ý phim dựa theo thuộc tính giống
+                            function dequyDeXuat(currentMovie) {
+                            displayedIds.push(currentMovie.id);
+
+                            movieList.forEach(movieItem => {
+                                if (displayedIds.includes(movieItem.id)) return;
+
+                                // 1. So sánh tiêu đề, đạo diễn, NSX, năm
+                                if (
+                                    tolower(movieItem.title).includes(tolower(currentMovie.title)) ||
+                                    tolower(movieItem.title_en).includes(tolower(currentMovie.title_en)) ||
+                                    tolower(movieItem.director).includes(tolower(currentMovie.director)) ||
+                                    tolower(movieItem.producer).includes(tolower(currentMovie.producer)) ||
+                                    movieItem.year === currentMovie.year
+                                ) {
+                                    displayfilm(movieItem);
+                                    displayedIds.push(movieItem.id);
+                                    dequyDeXuat(movieItem);
+                                    return; // Không cần kiểm tiếp, đã hiển thị rồi
+                                }
+
+                                // 2. So sánh dàn diễn viên
+                                for (let k = 0; k < currentMovie.main_cast.length; k++) {
+                                    if (movieItem.main_cast.includes(currentMovie.main_cast[k])) {
+                                        displayfilm(movieItem);
+                                        displayedIds.push(movieItem.id);
+                                        dequyDeXuat(movieItem);
+                                        return;
+                                    }
+                                }
+
+                                // 3. So sánh thể loại
+                                for (let k = 0; k < currentMovie.genres.length; k++) {
+                                    if (movieItem.genres.includes(currentMovie.genres[k])) {
+                                        displayfilm(movieItem);
+                                        displayedIds.push(movieItem.id);
+                                        dequyDeXuat(movieItem);
+                                        return;
+                                    }
+                                }
+                            });
+                        }
+
+                        dequyDeXuat(movie); //hàm đệ quy
+                        }
+
+                        playVideo(movieId);
+
+                        const video = document.getElementById("movie-video"); // ID thẻ <video>
+                        const rewindBtn = document.getElementById("rewind-btn");
+                        const forwardBtn = document.getElementById("forward-btn");
+                        const speedSelect = document.getElementById("speed-select");
+
+                        // Tua lại 10 giây
+                        rewindBtn.addEventListener("click", function () {
+                            video.currentTime -= 10;
+                        });
+
+                        // Tua tới 10 giây
+                        forwardBtn.addEventListener("click", function () {
+                            video.currentTime += 10;
+                        });
+                </script>

@@ -1,0 +1,200 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="fileCSS.css">
+    <!--link thư viện của font awsome cho phép sử dụng ICON-->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+    <title>Movies-design</title>
+    </head>
+
+    <body>
+        <div class="navbar">
+            <div class="navbar-container">
+                <div class="logo-container"><h1 class="logo">Movies</h1></div>
+                <div class="menu-container">
+                    <ul class="menu-list">
+                        <li class="menu-list-item" id="BOLD"><a href="TRANGWEB.html">Trang chủ</a></li>
+                        <li class="menu-list-item"><a href="Trangchitiet.html?id=3">Xem phim</a></li>
+                        <li class="menu-list-item"><a href="Tranglienhe.html">Liên hệ</a></li>
+                        <li class="menu-list-item"><a href="TrangTimkiem.html?keyword=f">Tìm kiếm</a></li>
+                    </ul>
+                </div>
+                <div class="profile-container">
+                    <!--thanh tìm kiếm-->
+                    <form id="search-box">
+                    <input type="text" id="search-text" name="keyword" placeholder="Tìm kiếm..." required autocomplete="off">
+                    <button type="submit" id="search-btn">
+                        <i class="fas fa-search"></i>
+                    </button>
+                    <ul id="suggestions"></ul> <!-- Hiển thị gợi ý -->
+                    </form>
+
+                    <!--thẻ chứa hình ảnh sau khi nhập tìm kiếm-->
+                    
+                    <div class="toggle">
+                        <i class="fas fa-moon toggle-icon"></i>
+                        <i class="fas fa-sun toggle-icon"></i>
+                        <div class="toggle-ball"></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <!--phần trình chiếu video xem phim khi ta click chúng ở trang chủ-->
+        <div class="container">
+            <div class="content-container">
+                <div class="movie-list search-page" style="height: 100%;">
+                                    
+                <!--phần trả về kết quả tìm kiếm-->
+
+                </div>               
+            </div>  
+        </div>
+        <footer style="background-color: rgba(0,0,0,0); border-top: 2px solid red; color: #777; padding: 20px 0; text-align: center;">
+            <div style="max-width: 1000px; margin: auto;">
+              <p style="font-size: 18px; margin-bottom: 10px;">🎬 Website Xem Phim Trực Tuyến</p>
+              <p style="font-size: 14px; margin: 5px 0;">Liên hệ: contact@xemphimonline.vn</p>
+              <p style="font-size: 14px; margin: 5px 0;">© 2025 XemPhimOnline.vn – All rights reserved</p>
+              <p style="font-size: 13px; margin-top: 10px;">
+                Nội dung trên website được tổng hợp từ nhiềunguồn khác nhau và chỉ phục vụ mục đích giải trí.
+              </p>
+            </div>
+          </footer>
+    </body>
+</html>
+<script src="app.js"></script>
+<script>
+                            darkLight();
+                            const params = new URLSearchParams(window.location.search);
+                            const keyword = params.get('keyword');
+                            const displayedIds = [];
+                            const container = document.querySelector(".search-page");
+
+                            function removeVietnamese(str) {//chuyển từ sang tiếng việt
+                            return str.normalize("NFD").replace(/[\u0300-\u036f]/g, "")
+                                    .replace(/đ/g, "d").replace(/Đ/g, "D");
+                            }
+
+                            function tolower(str) {
+                            return removeVietnamese(str).toLowerCase().replace(/\s+/g, '');
+                            }
+
+                            function displayfilm(film) {
+                                const movieItem = document.createElement("div");
+                                movieItem.className = "movie-list-item";
+                                // <p class="movie-list-item-desc">${film.description}</p>
+                                movieItem.innerHTML = `
+                                    <img class="movie-list-item-img" src="${film.poster}">
+                                    <span class="movie-list-item-title">${film.title}</span>
+                                    <button class="movie-list-item-button" onclick="location.href='Trangchitiet.html?id=${film.id}'">
+                                        <i class="fa-solid fa-play"> Xem ngay</i>
+                                    </button>
+                                `;
+
+                                container.appendChild(movieItem);
+                            }
+
+                            // Hàm đệ quy tìm phim đề xuất liên quan
+                            function dequyDeXuat(currentMovie) {
+                                for (let i = 0; i < movieList.length; i++) {
+                                    const movie = movieList[i];
+
+                                    if (!displayedIds.includes(movie.id)) {
+
+                                    // So sánh năm
+                                    if (movie.year === currentMovie.year) {
+                                        displayfilm(movie);
+                                        displayedIds.push(movie.id);
+                                        dequyDeXuat(movie);
+                                        return;
+                                    }
+
+                                    // So sánh diễn viên
+                                    for (let j = 0; j < currentMovie.main_cast.length; j++) {
+                                        if (movie.main_cast.includes(currentMovie.main_cast[j])) {
+                                            displayfilm(movie);
+                                            displayedIds.push(movie.id);
+                                            dequyDeXuat(movie);
+                                            return;
+                                        }
+                                    }
+
+                                    // So sánh thể loại
+                                    for (let j = 0; j < currentMovie.genres.length; j++) {
+                                        if (movie.genres.includes(currentMovie.genres[j])) {
+                                            displayfilm(movie);
+                                            displayedIds.push(movie.id);
+                                            dequyDeXuat(movie);
+                                            return;
+                                        }
+                                    }
+                                    
+                                  }
+                                }
+                            }
+
+                            // Hàm xử lý tìm kiếm chính
+                           function timPhimTheoKeyword(keyword) {
+                                container.innerHTML = "";
+                                displayedIds.length = 0;
+
+                                const kw = tolower(keyword);
+
+                                for (let i = 0; i < movieList.length; i++) {
+                                    const movie = movieList[i];
+
+                                    // So sánh tiêu đề, tiêu đề tiếng Anh, đạo diễn, nhà sản xuất
+                                    if (movie.year.toString()===kw||
+                                        tolower(movie.title).includes(kw) ||
+                                        tolower(movie.title_en).includes(kw) ||
+                                        tolower(movie.director).includes(kw) ||
+                                        tolower(movie.producer).includes(kw)
+                                    ) {
+                                        displayfilm(movie);
+                                        displayedIds.push(movie.id);
+                                        dequyDeXuat(movie);
+                                        return;
+                                    }
+
+                                    // So sánh diễn viên (main_cast)
+                                    for (let j = 0; j < movie.main_cast.length; j++) {
+                                        if (tolower(movie.main_cast[j]).includes(kw)) {
+                                            displayfilm(movie);
+                                            displayedIds.push(movie.id);
+                                            dequyDeXuat(movie);
+                                            return;
+                                        }
+                                    }
+
+                                    // So sánh thể loại (genres)
+                                    for (let j = 0; j < movie.genres.length; j++) {
+                                        if (tolower(movie.genres[j]).includes(kw)) {
+                                            displayfilm(movie);
+                                            displayedIds.push(movie.id);
+                                            dequyDeXuat(movie);
+                                            return;
+                                        }
+                                    }
+                                }
+
+                                // Nếu không tìm thấy phim
+                                const noResult = document.createElement("p");
+                                noResult.textContent = "Không có bộ phim nào phù hợp với từ khóa bạn tìm kiếm.";
+                                container.appendChild(noResult);
+                            }
+
+
+                            // Gắn sự kiện cho nút tìm kiếm
+                            document.getElementById("search-box").addEventListener("click", function (e) {
+                                e.preventDefault();
+                                const text = document.getElementById("search-text").value.trim();
+                                if (text !== "") {
+                                    window.location.href = "Trangtimkiem.html?keyword=" + text;
+                                }
+                            });
+
+                            // Gọi tìm kiếm khi trang tải
+                            timPhimTheoKeyword(keyword);
+                </script>
